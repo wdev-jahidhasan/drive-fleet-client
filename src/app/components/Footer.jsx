@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-950 text-gray-400 px-6 md:px-16 py-16">
+    <footer className="bg-[#0d2430] text-gray-400 px-6 md:px-16 py-5 lg:py-16">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <Image
             src={'/images/final-logo.png'}
             alt='logo'
-            height={400}
-            width={400}
+            height={300}
+            width={300}
             className="brightness-0 invert"
           >
           </Image>
