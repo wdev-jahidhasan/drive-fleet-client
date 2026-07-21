@@ -40,7 +40,7 @@ const Navbar = () => {
 
             <Link
               href="/login"
-              className="bg-[#8a0e37] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold text-xs md:text-sm hover:bg-[#bd2a5b] transition-all shadow-sm"
+              className="bg-[#8a0e37] text-white px-3 py-1.5 md:px-6 md:py-2 rounded-lg font-semibold text-sm md:text-lg hover:bg-[#bd2a5b] transition-all shadow-sm"
             >
               Login
             </Link>

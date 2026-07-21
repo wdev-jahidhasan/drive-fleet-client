@@ -1,11 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Testimonials from "./components/Testimonials";
+import FeaturedCars from "./components/FeaturedCars";
 
 export default function Home() {
   return (
+    <>
     <main>
       {/* Hero Section */}
+      {/* <section className="relative overflow-hidden bg-slate-800"> */}
       <section className="relative overflow-hidden bg-[#0F3040]">
+
+        {/* [#0F3040] */}
+
+
         {/* Background Blur */}
         <div className="absolute -top-1/2 -left-1/2 w-96 h-96 bg-[#0F3040] rounded-full blur-[120px]"></div>
         <div className="absolute bottom-0 right-0 w-[450px] h-[450px] bg-cyan-500/20 rounded-full blur-[150px]"></div>
@@ -78,5 +87,11 @@ export default function Home() {
         </div>
       </section>
     </main>
+
+    {/* WhyChooseUs and Testimonial components */}
+    <FeaturedCars></FeaturedCars>
+    <WhyChooseUs></WhyChooseUs>
+    <Testimonials></Testimonials>
+    </>
   );
 }
