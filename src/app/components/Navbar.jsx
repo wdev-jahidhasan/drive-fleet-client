@@ -4,41 +4,58 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav className='shadow-sm'>
-      <div className='max-w-7xl mx-auto p-3'>
-      <div className='flex justify-between items-center'>
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <ul className='flex gap-5 text-teal-500 font-semibold'>
-          <li>
-            <Link href={'/'}>Home</Link>
-          </li>
-          <li>
-            <Link href={'/explore-cars'}>Explore Cars</Link>
-          </li>
-          <li>
-            <Link href={'/my-bookings'}>My Bookings</Link>
-          </li>
-          <li>
-            <Link href={'/add-car'}>Add Car</Link>
-          </li>
+        <div className="flex justify-between items-center h-16">
           
-        </ul>
+          <div className="flex items-center">
+            <label htmlFor="menu-toggle" className="cursor-pointer text-teal-500 p-2 md:hidden">
+              <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2zm0 6h16a1 1 0 010 2H4a1 1 0 010-2z" />
+              </svg>
+            </label>
 
-        <Image
-          src={'/images/logo.png'}
-          alt='logo'
-          height={200}
-          width={200}
-        >
-        </Image>
+            <ul className="hidden md:flex items-center gap-6 text-teal-500 font-semibold">
+              <li><Link href="/" className="hover:text-teal-600 transition-colors">Home</Link></li>
+              <li><Link href="/explore-cars" className="hover:text-teal-600 transition-colors">Explore Cars</Link></li>
+              <li><Link href="/my-bookings" className="hover:text-teal-600 transition-colors">My Bookings</Link></li>
+              <li><Link href="/add-car" className="hover:text-teal-600 transition-colors">Add Car</Link></li>
+            </ul>
+          </div>
 
-      <ul className='text-teal-500 font-semibold'>
-        <li>
-          <Link href={'/login'}>Login/SignUp</Link>
-        </li>
-      </ul>
+          <div className="flex-shrink-0 flex items-center">
+            <Link href="/">
+              <Image
+                src="/images/final-logo.png"
+                alt="logo"
+                height={200}
+                width={200}
+              />
+            </Link>
+          </div>
 
+          <div className="flex items-center">
+            <Link 
+              href="/login" 
+              className="bg-teal-500 text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold text-xs md:text-sm hover:bg-teal-600 transition-all shadow-sm"
+            >
+              Login
+            </Link>
+          </div>
+
+        </div>
       </div>
+
+      <input type="checkbox" id="menu-toggle" className="peer hidden" />
+
+      <div className="hidden peer-checked:block md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-4 shadow-lg w-[40%]">
+        <ul className="flex flex-col gap-2 text-teal-500 font-semibold text-sm">
+          <li><Link href="/" className="block py-2 border-b border-gray-50">Home</Link></li>
+          <li><Link href="/explore-cars" className="block py-2 border-b border-gray-50">Explore Cars</Link></li>
+          <li><Link href="/my-bookings" className="block py-2 border-b border-gray-50">My Bookings</Link></li>
+          <li><Link href="/add-car" className="block py-2">Add Car</Link></li>
+        </ul>
       </div>
     </nav>
   );
