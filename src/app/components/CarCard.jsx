@@ -62,7 +62,7 @@ const CarCard = ({ car }) => {
 
         <Link href={`/explore-cars/${_id}`}>
         <button className="mt-4 w-full bg-[#8a0e37] hover:bg-[#a01142] active:scale-[0.98] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2">
-          Rent Now
+          Details
         </button>
         </Link>
       </div>

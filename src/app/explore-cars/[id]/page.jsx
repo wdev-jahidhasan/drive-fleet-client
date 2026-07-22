@@ -1,3 +1,6 @@
+import { EditModal } from "@/app/components/EditModal";
+import { Button } from "@heroui/react";
+import { Edit } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +24,8 @@ const CarDetails = async ({ params }) => {
             Back to All Cars
           </button>
         </Link>
+        
+        <EditModal car={car}></EditModal>
 
         <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
           {/* Hero Image */}
@@ -72,7 +77,7 @@ const CarDetails = async ({ params }) => {
               <p className="text-slate-300 leading-relaxed text-sm sm:text-base break-words">{description}</p>
             </div>
 
-            {/* Specs as Compact Badges - এখানে পরিবর্তন */}
+            {/* Specs as Compact Badges */}
             <div className="flex flex-wrap gap-2 sm:gap-3 mb-4 sm:mb-6">
               <div className="bg-slate-700/50 px-3 py-1.5 rounded-full flex items-center gap-1.5">
                 <span className="text-slate-400 text-xs">Seats:</span>
