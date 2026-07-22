@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const CarCard = ({ car }) => {
   const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, _id } = car;
 
   return (
-    <div className="max-w-sm bg-slate-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-slate-700 hover:border-[#8a0e37] group">
+    <div className="max-w-sm bg-[#0d3143] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-yellow-600 hover:border-yellow-200 group">
       <div className="relative h-52 w-full bg-slate-700 overflow-hidden">
         <Image
           alt={model}
@@ -15,7 +16,7 @@ const CarCard = ({ car }) => {
         />
         {/* Price Badge */}
         <span className="absolute top-3 right-3 bg-[#8a0e37] text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-          ${price}
+          {price} TK
           <span className="text-xs font-normal ml-0.5">/day</span>
         </span>
         {/* Car Type Badge */}
@@ -58,9 +59,12 @@ const CarCard = ({ car }) => {
         </div>
 
         {/* Button */}
+
+        <Link href={`/explore-cars/${_id}`}>
         <button className="mt-4 w-full bg-[#8a0e37] hover:bg-[#a01142] active:scale-[0.98] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2">
           Rent Now
         </button>
+        </Link>
       </div>
     </div>
   );
