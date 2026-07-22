@@ -2,6 +2,7 @@ import { Comic_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const comicNeue = Comic_Neue({
   weight: ['300', '400', '700'],
@@ -24,6 +25,8 @@ export default function RootLayout({ children }) {
         <Navbar></Navbar>
         {children}
         <Footer></Footer>
+
+        <Toaster></Toaster>
 
       </body>
     </html>

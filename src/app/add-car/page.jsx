@@ -1,22 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddCar = () => {
-  const [isPending, setIsPending] = useState(false);
-  const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsPending(true);
+    e.preventDefault();;
 
     const formData = new FormData(e.currentTarget);
     const carData = Object.fromEntries(formData.entries());
 
-    try {
-      const response = await fetch('/api/cars', {
+    console.log(carData);
+
+       const res = await fetch('http://localhost:8000/cars', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,24 +21,21 @@ const AddCar = () => {
         body: JSON.stringify(carData),
       });
 
-      const result = await response.json();
+      const data = await res.json();
 
-      if (response.ok) {
-        alert('Car added successfully!');
+      console.log(data);
+
+      if (res.ok) {
+        toast.success('Car added successfully!');
         e.target.reset();
       } else {
-        alert(result.message || 'Failed to add car!');
+        toast.error('Failed to add car!');
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('Something went wrong!');
-    } finally {
-      setIsPending(false);
-    }
   };
 
   return (
     <div className='bg-slate-800'>
+      <Toaster></Toaster>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       
       <div className="bg-slate-800 text-slate-100 rounded-3xl shadow-2xl p-6 sm:p-10 border border-slate-700">
@@ -200,11 +194,9 @@ const AddCar = () => {
           {/* Submit Button */}
           <Button
             type="submit"
-            isLoading={isPending}
-            disabled={isPending}
             className="rounded-2xl w-full bg-[#8a0e37] hover:bg-[#bd2a5b] text-white font-bold py-4 transition-all duration-200 shadow-lg shadow-cyan-500/20 disabled:opacity-50"
           >
-            {isPending ? "Adding Car to Database..." : "Add Car Listing"}
+            Add Car
           </Button>
         </form>
       </div>
