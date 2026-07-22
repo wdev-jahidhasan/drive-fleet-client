@@ -43,9 +43,7 @@ export function EditModal({ car }) {
     
     <Modal>
       <Toaster></Toaster>
-      <div className="flex justify-end">
-        <Button variant="outline" className={'rounded-none text-white mt-5 mb-3'}><Edit></Edit> Edit</Button>
-      </div>
+        <Button variant="outline" className={'rounded-none text-white'}><Edit></Edit> Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-sm md:max-w-lg lg:max-w-3xl bg-slate-800">

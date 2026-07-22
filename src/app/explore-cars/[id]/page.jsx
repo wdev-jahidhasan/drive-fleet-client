@@ -1,3 +1,4 @@
+import { DeleteDialog } from "@/app/components/DeleteDialog";
 import { EditModal } from "@/app/components/EditModal";
 import { Button } from "@heroui/react";
 import { Edit } from "lucide-react";
@@ -24,8 +25,11 @@ const CarDetails = async ({ params }) => {
             Back to All Cars
           </button>
         </Link>
-        
-        <EditModal car={car}></EditModal>
+
+        <div className="flex items-center justify-end gap-4 mt-5 mb-3">
+          <EditModal car={car}></EditModal>
+          <DeleteDialog car={car}></DeleteDialog>
+        </div>
 
         <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
           {/* Hero Image */}
