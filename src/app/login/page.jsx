@@ -30,8 +30,15 @@ const LoginPage = () => {
     if (error) {
       toast.error(error.message)
     }
-
   };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social(
+      {
+        provider: "google",
+      }
+    )
+  }
 
   return (
     <div className='bg-slate-900 py-5'>
@@ -92,7 +99,7 @@ const LoginPage = () => {
       </Card>
 
       <Card className='flex flex-col items-center justify-center gap-5 mt-5 bg-slate-800 max-w-7xl mx-auto'>
-        <Button className={'w-80 md:w-96 bg-[#8a0e37] hover:bg-[#bd2a5b]'}><FaGoogle></FaGoogle> Login with Google</Button>
+        <Button onClick={handleGoogleSignIn} className={'w-80 md:w-96 bg-[#8a0e37] hover:bg-[#bd2a5b]'}><FaGoogle></FaGoogle> Login with Google</Button>
         <p className='text-white font-bold'>Don't have an account?</p>
         <Link href={'/signup'}>
           <Button className={'w-80 md:w-96 bg-[#8a0e37] hover:bg-[#bd2a5b]'}>Register Your DriveFleet Account</Button>
