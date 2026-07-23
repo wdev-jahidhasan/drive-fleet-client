@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const CarCard = ({ car }) => {
-  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, _id } = car;
+  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, _id, status } = car;
 
   return (
     <div className="max-w-sm bg-[#0d3143] rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-yellow-600 hover:border-yellow-200 group">
@@ -15,22 +15,25 @@ const CarCard = ({ car }) => {
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
         />
         {/* Price Badge */}
-        <span className="absolute top-3 right-3 bg-[#8a0e37] text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+        <span className="absolute top-3 right-3 bg-[#8a0e37] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">
           {price} TK
           <span className="text-xs font-normal ml-0.5">/day</span>
         </span>
-        {/* Car Type Badge */}
-        <span className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full">
-          {carType}
+        {/* Availability badge */}
+        <span className="absolute top-3 left-3 bg-[#8a0e37] backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full">
+          {status}
         </span>
       </div>
 
       <div className="p-5">
-        {/* Title */}
+        {/* brand model and type */}
         <div className="flex justify-between items-start mb-1">
           <h3 className="text-lg font-extrabold text-yellow-400">
             {company} <span className="text-white">{model}</span>
           </h3>
+          <span className=" bg-black/60 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full">
+            {carType}
+          </span>
         </div>
 
         {/* Location */}
@@ -61,9 +64,9 @@ const CarCard = ({ car }) => {
         {/* Button */}
 
         <Link href={`/explore-cars/${_id}`}>
-        <button className="mt-4 w-full bg-[#8a0e37] hover:bg-[#a01142] active:scale-[0.98] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2">
-          Details
-        </button>
+          <button className="mt-4 w-full bg-[#8a0e37] hover:bg-[#a01142] active:scale-[0.98] text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2">
+            Details
+          </button>
         </Link>
       </div>
     </div>

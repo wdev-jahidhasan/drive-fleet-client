@@ -40,10 +40,10 @@ export function EditModal({ car }) {
   };
 
   return (
-    
+
     <Modal>
       <Toaster></Toaster>
-        <Button variant="outline" className={'rounded-none text-white'}><Edit></Edit> Edit</Button>
+      <Button variant="outline" className={'rounded-none text-white'}><Edit></Edit> Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
           <Modal.Dialog className="sm:max-w-sm md:max-w-lg lg:max-w-3xl bg-slate-800">
@@ -59,7 +59,7 @@ export function EditModal({ car }) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
 
                     {/* Car Model */}
-                    <div className="md:col-span-2">
+                    {/* <div className="md:col-span-2">
                       <TextField defaultValue={model} name="model" isRequired>
                         <Label className="text-slate-200 font-medium mb-2 block">Car Model</Label>
                         <Input
@@ -68,17 +68,17 @@ export function EditModal({ car }) {
                         />
                         <FieldError className="text-red-400 text-sm mt-1" />
                       </TextField>
-                    </div>
+                    </div> */}
 
                     {/* Brand / Company */}
-                    <TextField defaultValue={company} name="company" isRequired>
+                    {/* <TextField defaultValue={company} name="company" isRequired>
                       <Label className="text-slate-200 font-medium mb-2 block">Brand / Company</Label>
                       <Input
                         placeholder="Enter Brand Name"
                         className="rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500 w-full"
                       />
                       <FieldError className="text-red-400 text-sm mt-1" />
-                    </TextField>
+                    </TextField> */}
 
                     {/* Car Type (Dropdown) */}
                     <div>
@@ -117,7 +117,7 @@ export function EditModal({ car }) {
                     </TextField>
 
                     {/* Seating Capacity */}
-                    <TextField defaultValue={capacity} name="capacity" type="number" isRequired>
+                    {/* <TextField defaultValue={capacity} name="capacity" type="number" isRequired>
                       <Label className="text-slate-200 font-medium mb-2 block">Seating Capacity</Label>
                       <Input
                         type="number"
@@ -125,10 +125,10 @@ export function EditModal({ car }) {
                         className="rounded-2xl bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500 w-full"
                       />
                       <FieldError className="text-red-400 text-sm mt-1" />
-                    </TextField>
+                    </TextField> */}
 
                     {/* Fuel Type (Dropdown) */}
-                    <div>
+                    {/* <div>
                       <Select name="fuelType" isRequired className="w-full text-white" placeholder="Select Fuel Type">
                         <Label className="text-slate-200 font-medium mb-2 block">Fuel Type</Label>
                         <Select.Trigger className="rounded-2xl bg-slate-900 border border-slate-700 text-white hover:bg-slate-700/50">
@@ -144,10 +144,10 @@ export function EditModal({ car }) {
                           </ListBox>
                         </Select.Popover>
                       </Select>
-                    </div>
+                    </div> */}
 
                     {/* Transmission (Dropdown) */}
-                    <div>
+                    {/* <div>
                       <Select name="transmission" isRequired className="w-full text-white" placeholder="Select Transmission">
                         <Label className="text-slate-200 font-medium mb-2 block">Transmission</Label>
                         <Select.Trigger className="rounded-2xl bg-slate-900 border border-slate-700 text-white hover:bg-slate-700/50">
@@ -158,6 +158,23 @@ export function EditModal({ car }) {
                           <ListBox>
                             <ListBox.Item id="Automatic" textValue="Automatic" className="hover:bg-slate-700 text-slate-200">Automatic</ListBox.Item>
                             <ListBox.Item id="Manual" textValue="Manual" className="hover:bg-slate-700 text-slate-200">Manual</ListBox.Item>
+                          </ListBox>
+                        </Select.Popover>
+                      </Select>
+                    </div> */}
+
+                    {/* Status (Dropdown) -------------------------- */}
+                    <div>
+                      <Select name="status" isRequired className="w-full text-white" placeholder="Select Status">
+                        <Label className="text-slate-200 font-medium mb-2 block">Status</Label>
+                        <Select.Trigger className="rounded-2xl bg-slate-900 border border-slate-700 text-white hover:bg-slate-700/50">
+                          <Select.Value />
+                          <Select.Indicator />
+                        </Select.Trigger>
+                        <Select.Popover className="bg-slate-800 border border-slate-700 text-slate-100 rounded-xl shadow-xl">
+                          <ListBox>
+                            <ListBox.Item id="Available" textValue="Available" className="hover:bg-slate-700 text-slate-200">Available</ListBox.Item>
+                            <ListBox.Item id="Unavailable" textValue="Unavailable" className="hover:bg-slate-700 text-slate-200">Unavailable</ListBox.Item>
                           </ListBox>
                         </Select.Popover>
                       </Select>

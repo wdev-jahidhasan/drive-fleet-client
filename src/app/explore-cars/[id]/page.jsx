@@ -11,7 +11,7 @@ const CarDetails = async ({ params }) => {
   const res = await fetch(`http://localhost:8000/cars/${id}`);
   const car = await res.json();
 
-  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission } = car;
+  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, status } = car;
 
   return (
     <div className="bg-slate-900 py-6 sm:py-10">
@@ -41,6 +41,12 @@ const CarDetails = async ({ params }) => {
               className="object-cover"
               priority
             />
+
+            {/* Availability badge */}
+            <span className="absolute top-3 left-3 bg-[#8a0e37] backdrop-blur-sm text-white text-sm font-bold px-3 py-1.5 rounded-full">
+              {status}
+            </span>
+
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent" />
 
             <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
@@ -98,9 +104,21 @@ const CarDetails = async ({ params }) => {
             </div>
 
             {/* CTA */}
-            <button className="w-full bg-[#8a0e37] hover:bg-[#a01142] text-white font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2 text-sm sm:text-base">
-              Rent Now
-            </button>
+            {/* CTA Section */}
+            {status?.toLowerCase() === "available" ? (
+              <button className="w-full bg-[#8a0e37] hover:bg-[#a01142] text-white font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2 text-sm sm:text-base">
+                Rent Now
+              </button>
+            ) : (
+              <button
+                disabled
+                className="w-full bg-slate-700 text-slate-400 font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+              >
+                Currently Unavailable
+              </button>
+            )}
+
+
           </div>
         </div>
       </div>
