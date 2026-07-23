@@ -1,15 +1,41 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-import { Check } from "lucide-react";
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { FaGoogle } from 'react-icons/fa';
 
 const LoginPage = () => {
+  const handleSignIn = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries());
+
+    const { data, error } = await authClient.signIn.email({
+      email: user.email,
+      password: user.password,
+    })
+
+    console.log({data, error});
+
+    if (data) {
+      toast.success('Signed up successfully')
+      redirect('/')
+    }
+
+    if (error) {
+      toast.error(error.message)
+    }
+
+  };
+
   return (
     <div className='bg-slate-900 py-5'>
       <Card className='bg-slate-800 max-w-7xl mx-auto'>
-        <Form className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto py-5">
+        <Form onSubmit={handleSignIn} className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto py-5">
           {/* email */}
           <TextField
             isRequired

@@ -9,7 +9,7 @@ import { div } from 'framer-motion/client';
 const FeaturedCars = async () => {
   const res = await fetch('http://localhost:8000/popular')
   const cars = await res.json()
-  console.log(cars);
+  // console.log(cars);
 
 
 

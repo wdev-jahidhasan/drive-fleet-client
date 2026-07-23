@@ -1,8 +1,11 @@
+"use client"
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
+
   return (
     <nav className="bg-[#0d2430] shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
