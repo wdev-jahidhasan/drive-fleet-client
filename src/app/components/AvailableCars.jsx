@@ -6,8 +6,8 @@ import CarCard from './CarCard';
 import Image from 'next/image';
 import { div } from 'framer-motion/client';
 
-const FeaturedCars = async () => {
-  const res = await fetch('http://localhost:8000/popular')
+const AvailableCars = async () => {
+  const res = await fetch('http://localhost:8000/available')
   const cars = await res.json()
   // console.log(cars);
 
@@ -20,10 +20,10 @@ const FeaturedCars = async () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-sm font-semibold tracking-wider text-rose-500 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
-            Popular Cars
+            Available Cars
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3">
-            Book Our Popular Cars
+            Book Our Available Cars
           </h2>
         </div>
 
@@ -111,4 +111,4 @@ const FeaturedCars = async () => {
   );
 };
 
-export default FeaturedCars;
+export default AvailableCars;

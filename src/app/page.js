@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import WhyChooseUs from "./components/WhyChooseUs";
 import Testimonials from "./components/Testimonials";
-import FeaturedCars from "./components/FeaturedCars";
+import AvailableCars from "./components/AvailableCars";
 
 export default function Home() {
   return (
@@ -88,8 +88,8 @@ export default function Home() {
       </section>
     </main>
 
-    {/* FeaturedCars, WhyChooseUs and Testimonial components */}
-    <FeaturedCars></FeaturedCars>
+    {/* AvailableCars, WhyChooseUs and Testimonial components */}
+    <AvailableCars></AvailableCars>
     <WhyChooseUs></WhyChooseUs>
     <Testimonials></Testimonials>
     </>
