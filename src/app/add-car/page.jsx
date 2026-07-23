@@ -154,7 +154,7 @@ const AddCar = () => {
                 </Select>
               </div>
 
-              {/* Status (Dropdown) ----------------------------------- */}
+              {/* Status (Dropdown) */}
               <div>
                 <Select name="status" isRequired className="w-full text-white" placeholder="Select Status">
                   <Label className="text-slate-200 font-medium mb-2 block">Status</Label>
