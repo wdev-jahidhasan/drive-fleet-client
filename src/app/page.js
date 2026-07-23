@@ -88,7 +88,7 @@ export default function Home() {
       </section>
     </main>
 
-    {/* WhyChooseUs and Testimonial components */}
+    {/* FeaturedCars, WhyChooseUs and Testimonial components */}
     <FeaturedCars></FeaturedCars>
     <WhyChooseUs></WhyChooseUs>
     <Testimonials></Testimonials>
