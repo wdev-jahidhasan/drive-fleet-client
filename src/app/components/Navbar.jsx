@@ -1,10 +1,27 @@
 "use client"
 
+import { authClient } from '@/lib/auth-client';
+import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
+
+  const {
+    data: session,
+    // isPending,
+  } = authClient.useSession()
+
+  console.log(session);
+
+  const user = session?.user
+
+  console.log(user);
+
+  const handleLogOut = async () => {
+    await authClient.signOut();
+  }
 
   return (
     <nav className="bg-[#0d2430] shadow-sm sticky top-0 z-50">
@@ -39,15 +56,32 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div className="flex items-center">
+          {/* conditional login button or user avatar */}
 
-            <Link
-              href="/login"
-              className="bg-[#8a0e37] text-white px-3 py-1.5 md:px-6 md:py-2 rounded-lg font-semibold text-sm md:text-lg hover:bg-[#bd2a5b] transition-all shadow-sm"
-            >
-              Login
-            </Link>
-          </div>
+          {user ?
+            <>
+              <div className="flex items-center gap-3">
+                <div>
+                  <Avatar>
+                    <Avatar.Image alt="John Doe" src={user?.imageUrl} />
+                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                  </Avatar>
+                </div>
+                <Button onClick={handleLogOut} variant='danger' className={'rounded-lg'}>Logout</Button>
+              </div>
+            </>
+            :
+            <>
+              <div className="flex items-center">
+                <Link
+                  href="/login"
+                  className="bg-[#8a0e37] text-white px-3 py-1.5 md:px-6 md:py-2 rounded-lg font-semibold text-sm md:text-lg hover:bg-[#bd2a5b] transition-all shadow-sm"
+                >
+                  Login
+                </Link>
+              </div>
+            </>
+          }
 
         </div>
       </div>

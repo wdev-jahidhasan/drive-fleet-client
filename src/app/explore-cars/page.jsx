@@ -6,7 +6,6 @@ const ExploreCars = async () => {
   const res = await fetch('http://localhost:8000/cars')
   const cars = await res.json()
 
-  console.log(cars);
   return (
     <div className='bg-slate-800'>
       <div className=' max-w-7xl mx-auto p-4'>
