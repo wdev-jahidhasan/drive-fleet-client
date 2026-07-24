@@ -2,17 +2,16 @@
 
 import { authClient } from "@/lib/auth-client";
 import { Button, DateField, FieldError, Form, Label, ListBox, TextArea, TextField, Select, Card } from "@heroui/react";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const BookingForm = ({ car }) => {
-  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, _id, status } = car;
+  const {imageUrl, model, price, _id } = car;
 
   const {
     data: session,
-    // isPending,
   } = authClient.useSession()
-  // console.log(session);
   const user = session?.user
-  // console.log(user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +28,11 @@ const BookingForm = ({ car }) => {
 
     const finalData = await res.json()
     console.log(finalData);
+
+    if(finalData){
+      toast.success('Booked Successfully')
+      redirect('/my-bookings')
+    }
   };
   
     return (
@@ -37,7 +41,7 @@ const BookingForm = ({ car }) => {
         <Form onSubmit={handleSubmit} className="space-y-5">
 
           {/* card info */}
-          <input type="hidden" name="UserId" value={user?.id || ""} />
+          <input type="hidden" name="userId" value={user?.id || ""} />
           <input type="hidden" name="username" value={user?.name || ""} />
           <input type="hidden" name="carId" value={_id} />
           <input type="hidden" name="model" value={model} />
