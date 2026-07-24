@@ -31,7 +31,7 @@ export function EditModal({ car }) {
     console.log(data);
 
     if (res.ok) {
-      toast.success('Car Edited successfully!');
+      toast.success('Info Updated successfully!');
       redirect('/explore-cars')
       // e.target.reset();
     } else {

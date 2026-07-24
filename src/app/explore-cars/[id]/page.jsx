@@ -1,7 +1,6 @@
+import BookingForm from "@/app/components/BookingForm";
 import { DeleteDialog } from "@/app/components/DeleteDialog";
 import { EditModal } from "@/app/components/EditModal";
-import { Button } from "@heroui/react";
-import { Edit } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -103,21 +102,20 @@ const CarDetails = async ({ params }) => {
               </div>
             </div>
 
-            {/* CTA */}
-            {/* CTA Section */}
-            {status?.toLowerCase() === "available" ? (
-              <button className="w-full bg-[#8a0e37] hover:bg-[#a01142] text-white font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-[#8a0e37]/30 flex items-center justify-center gap-2 text-sm sm:text-base">
-                Rent Now
-              </button>
-            ) : (
-              <button
-                disabled
-                className="w-full bg-slate-700 text-slate-400 font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
-                Currently Unavailable
-              </button>
-            )}
+            {/* booking section --------------------------------------------- */}
+              {status?.toLowerCase() === "available" ? (
 
+                // if available
+                <BookingForm car ={car}></BookingForm>
+              ) : (
+                // if unavailable
+                <button
+                  disabled
+                  className="w-full bg-slate-700 text-slate-400 font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+                >
+                  Currently Unavailable
+                </button>
+              )}
 
           </div>
         </div>
