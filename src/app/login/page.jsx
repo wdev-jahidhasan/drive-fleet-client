@@ -19,8 +19,6 @@ const LoginPage = () => {
       password: user.password,
     })
 
-    console.log({data, error});
-
     if (data) {
       toast.success('Logged in successfully')
 
