@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Image from "next/image";
+import { BookingCancelAlert } from "../components/BookingCancelAlert";
 
 const MyBookingPage = async () => {
   const session = await auth.api.getSession({
@@ -62,9 +63,8 @@ const MyBookingPage = async () => {
                     </div>
 
                     {/* cancel button */}
-                    <button className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors cursor-pointer">
-                      Cancel
-                    </button>
+
+                    <BookingCancelAlert bookingId ={booking._id}></BookingCancelAlert>
                   </div>
 
                   <hr className="border-slate-700" />
