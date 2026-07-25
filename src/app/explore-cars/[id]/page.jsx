@@ -1,11 +1,17 @@
 import BookingForm from "@/app/components/BookingForm";
 import { DeleteDialog } from "@/app/components/DeleteDialog";
 import { EditModal } from "@/app/components/EditModal";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 const CarDetails = async ({ params }) => {
   const { id } = await params;
+
+  const session = await auth.api.getSession({
+    headers: await headers()
+  })
 
   const res = await fetch(`http://localhost:8000/cars/${id}`);
   const car = await res.json();
@@ -25,10 +31,12 @@ const CarDetails = async ({ params }) => {
           </button>
         </Link>
 
-        <div className="flex items-center justify-end gap-4 mt-5 mb-3">
-          <EditModal car={car}></EditModal>
-          <DeleteDialog car={car}></DeleteDialog>
-        </div>
+        {session && session.user.id === car.userId && (
+          <div className="flex items-center justify-end gap-4 mt-5 mb-3">
+            <EditModal car={car}></EditModal>
+            <DeleteDialog car={car}></DeleteDialog>
+          </div>
+        )}
 
         <div className="bg-slate-800 rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
           {/* Hero Image */}
@@ -103,19 +111,19 @@ const CarDetails = async ({ params }) => {
             </div>
 
             {/* booking section --------------------------------------------- */}
-              {status?.toLowerCase() === "available" ? (
+            {status?.toLowerCase() === "available" ? (
 
-                // if available
-                <BookingForm car ={car}></BookingForm>
-              ) : (
-                // if unavailable
-                <button
-                  disabled
-                  className="w-full bg-slate-700 text-slate-400 font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
-                >
-                  Currently Unavailable
-                </button>
-              )}
+              // if available
+              <BookingForm car={car}></BookingForm>
+            ) : (
+              // if unavailable
+              <button
+                disabled
+                className="w-full bg-slate-700 text-slate-400 font-semibold py-3 px-4 sm:py-3.5 sm:px-6 rounded-xl cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+              >
+                Currently Unavailable
+              </button>
+            )}
 
           </div>
         </div>

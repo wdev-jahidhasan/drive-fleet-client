@@ -41,6 +41,7 @@ const LoginPage = () => {
   return (
     <div className='bg-slate-900 py-5'>
       <Card className='bg-slate-800 max-w-7xl mx-auto'>
+        <h1 className="text-3xl font-bold mb-6 text-white text-center">Login to your account</h1>
         <Form onSubmit={handleSignIn} className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto py-5">
           {/* email */}
           <TextField

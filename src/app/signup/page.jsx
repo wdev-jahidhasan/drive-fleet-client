@@ -21,7 +21,7 @@ const SignUpPage = () => {
 
     if(data){
       toast.success('Signed up successfully')
-      redirect('/')
+      redirect('/login')
     }
 
     if(error){
@@ -32,6 +32,7 @@ const SignUpPage = () => {
   return (
     <div className='bg-slate-900 flex items-center justify-center'>
       <Card className='bg-slate-800 w-full max-w-7xl mx-auto'>
+        <h1 className="text-3xl font-bold mb-6 text-white text-center">Register Your Account</h1>
         <Form onSubmit={handleSignUp} className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto py-5">
           
           {/* Name Field */}
