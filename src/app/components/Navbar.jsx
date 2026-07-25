@@ -114,7 +114,7 @@ const Navbar = () => {
 
       <input type="checkbox" id="menu-toggle" className="peer hidden" />
 
-      <div className="hidden peer-checked:block md:hidden bg-gray-400 border-t border-gray-100 px-4 pt-2 pb-4 shadow-lg w-[30%]">
+      <div className="hidden peer-checked:block md:hidden bg-gray-400 border-t border-gray-100 px-4 pt-2 pb-4 shadow-lg w-[40%]">
         <ul className="flex flex-col gap-2 text-[#be154e] font-semibold text-sm">
           {/* home button */}
           <li><Link href="/" className={`block py-2 ${pathname === "/" ? "border-b-3 border-yellow-400" : ""}`}>Home</Link></li>
