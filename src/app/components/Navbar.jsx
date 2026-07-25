@@ -1,7 +1,7 @@
 "use client"
 
 import { authClient } from '@/lib/auth-client';
-import { Avatar, Button } from '@heroui/react';
+import { Avatar, Button, Dropdown, DropdownTrigger, Label } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -14,11 +14,7 @@ const Navbar = () => {
     // isPending,
   } = authClient.useSession()
 
-  // console.log(session);
-
   const user = session?.user
-
-  // console.log(user);
 
   const handleLogOut = async () => {
     await authClient.signOut();
@@ -46,8 +42,6 @@ const Navbar = () => {
               <li><Link href="/my-bookings" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/my-bookings" ? "border-white" : "border-transparent"}`}>My Bookings</Link></li>
               {/* add car button */}
               <li><Link href="/add-car" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/add-car" ? "border-white" : "border-transparent"}`}>Add Car</Link></li>
-              {/* my added cars button */}
-              <li><Link href="/my-added-cars" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/my-added-cars" ? "border-white" : "border-transparent"}`}>My Added Cars</Link></li>
             </ul>
           </div>
 
@@ -67,15 +61,40 @@ const Navbar = () => {
 
           {user ?
             <>
-              <div className="flex items-center gap-3">
-                <div>
+              {/* dropdown */}
+
+              <Dropdown>
+                {/* trigger */}
+                <DropdownTrigger>
                   <Avatar>
-                    <Avatar.Image referrerPolicy='no-referrer'  alt={user.name} src={user?.image || user?.imageUrl}/>
+                    <Avatar.Image referrerPolicy='no-referrer' alt={user.name} src={user?.image || user?.imageUrl} />
                     <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                   </Avatar>
-                </div>
-                <Button onClick={handleLogOut} variant='danger' className={'rounded-lg'}>Logout</Button>
-              </div>
+                </DropdownTrigger>
+                <Dropdown.Popover className={'bg-gray-950'}>
+                  <Dropdown.Menu onAction={(key) => console.log(`Selected: ${key}`)}>
+                    <Dropdown.Item id="new-file" textValue="New file">
+                      <Link href={'/add-car'}>
+                        <Label className='text-yellow-500 font-bold'>Add Car</Label>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item id="copy-link" textValue="Copy link">
+                      <Link href={'/my-added-cars'}>
+                        <Label className='text-yellow-500 font-bold'>My Added Cars</Label>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item id="edit-file" textValue="Edit file">
+                      <Link href={'/my-bookings'}>
+                        <Label className='text-yellow-500 font-bold'>My Bookings</Label>
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item id="delete-file" textValue="Delete file" variant="danger">
+                      <Button onClick={handleLogOut} variant='ghost' className={'rounded-lg text-lg text-red-500 font-extrabold'}>Logout</Button>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown.Popover>
+              </Dropdown>
+
             </>
             :
             <>
