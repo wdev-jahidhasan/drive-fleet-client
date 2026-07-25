@@ -4,9 +4,10 @@ import { authClient } from '@/lib/auth-client';
 import { Avatar, Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
+  const pathname = usePathname();
 
   const {
     data: session,
@@ -37,11 +38,16 @@ const Navbar = () => {
             </label>
 
             <ul className="hidden md:flex items-center gap-6 text-white font-semibold">
-              <li><Link href="/" className=" hover:text-yellow-200 transition-colors">Home</Link></li>
-              <li><Link href="/explore-cars" className="hover:text-yellow-200 transition-colors">Explore Cars</Link></li>
-              <li><Link href="/my-bookings" className="hover:text-yellow-200 transition-colors">My Bookings</Link></li>
-              <li><Link href="/add-car" className="hover:text-yellow-200 transition-colors">Add Car</Link></li>
-              <li><Link href="/my-added-cars" className="hover:text-yellow-200 transition-colors">My Added Cars</Link></li>
+              {/* home button */}
+              <li><Link href="/" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/" ? "border-white" : "border-transparent"}`}>Home</Link></li>
+              {/* explore cars button */}
+              <li><Link href="/explore-cars" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/explore-cars" ? "border-white" : "border-transparent"}`}>Explore Cars</Link></li>
+              {/* my bookings button */}
+              <li><Link href="/my-bookings" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/my-bookings" ? "border-white" : "border-transparent"}`}>My Bookings</Link></li>
+              {/* add car button */}
+              <li><Link href="/add-car" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/add-car" ? "border-white" : "border-transparent"}`}>Add Car</Link></li>
+              {/* my added cars button */}
+              <li><Link href="/my-added-cars" className={`hover:text-yellow-200 transition-colors py-2 border-b-2 ${pathname === "/my-added-cars" ? "border-white" : "border-transparent"}`}>My Added Cars</Link></li>
             </ul>
           </div>
 
@@ -89,12 +95,16 @@ const Navbar = () => {
 
       <input type="checkbox" id="menu-toggle" className="peer hidden" />
 
-      <div className="hidden peer-checked:block md:hidden bg-gray-400 border-t border-gray-100 px-4 pt-2 pb-4 shadow-lg w-[40%]">
+      <div className="hidden peer-checked:block md:hidden bg-gray-400 border-t border-gray-100 px-4 pt-2 pb-4 shadow-lg w-[30%]">
         <ul className="flex flex-col gap-2 text-[#be154e] font-semibold text-sm">
-          <li><Link href="/" className="block py-2 border-b border-gray-50">Home</Link></li>
-          <li><Link href="/explore-cars" className="block py-2 border-b border-gray-50">Explore Cars</Link></li>
-          <li><Link href="/my-bookings" className="block py-2 border-b border-gray-50">My Bookings</Link></li>
-          <li><Link href="/add-car" className="block py-2">Add Car</Link></li>
+          {/* home button */}
+          <li><Link href="/" className={`block py-2 ${pathname === "/" ? "border-b-3 border-yellow-400" : ""}`}>Home</Link></li>
+          {/* explore cars button */}
+          <li><Link href="/explore-cars" className={`block py-2 ${pathname === "/explore-cars" ? "border-b-3 border-yellow-400" : ""}`}>Explore Cars</Link></li>
+          {/* my bookings button */}
+          <li><Link href="/my-bookings" className={`block py-2 ${pathname === "/my-bookings" ? "border-b-3 border-yellow-400" : ""}`}>My Bookings</Link></li>
+          {/* add car button */}
+          <li><Link href="/add-car" className={`block py-2 ${pathname === "/add-car" ? "border-b-3 border-yellow-400" : ""}`}>Add Car</Link></li>
         </ul>
       </div>
     </nav>
