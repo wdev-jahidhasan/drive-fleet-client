@@ -1,18 +1,23 @@
 'use client';
 
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
 import { redirect } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 
 const AddCar = () => {
 
+  const {
+      data: session,
+    } = authClient.useSession()
+    const user = session?.user
+
   const handleSubmit = async (e) => {
-    e.preventDefault();;
+    e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
     const carData = Object.fromEntries(formData.entries());
-
-    console.log(carData);
+    // console.log(carData);
 
     const res = await fetch('http://localhost:8000/cars', {
       method: 'POST',
@@ -48,6 +53,9 @@ const AddCar = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+
+              {/* hidden */}
+              <input type="hidden" name="userId" value={user?.id || ""} />
 
               {/* Car Model */}
               <div className="md:col-span-2">

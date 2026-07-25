@@ -13,11 +13,11 @@ const Navbar = () => {
     // isPending,
   } = authClient.useSession()
 
-  console.log(session);
+  // console.log(session);
 
   const user = session?.user
 
-  console.log(user);
+  // console.log(user);
 
   const handleLogOut = async () => {
     await authClient.signOut();
@@ -41,6 +41,7 @@ const Navbar = () => {
               <li><Link href="/explore-cars" className="hover:text-yellow-200 transition-colors">Explore Cars</Link></li>
               <li><Link href="/my-bookings" className="hover:text-yellow-200 transition-colors">My Bookings</Link></li>
               <li><Link href="/add-car" className="hover:text-yellow-200 transition-colors">Add Car</Link></li>
+              <li><Link href="/my-added-cars" className="hover:text-yellow-200 transition-colors">My Added Cars</Link></li>
             </ul>
           </div>
 
@@ -63,7 +64,7 @@ const Navbar = () => {
               <div className="flex items-center gap-3">
                 <div>
                   <Avatar>
-                    <Avatar.Image alt={user.name} src={user?.image || user?.imageUrl} imgprops={{ referrerPolicy: 'no-referrer' }}/>
+                    <Avatar.Image referrerPolicy='no-referrer'  alt={user.name} src={user?.image || user?.imageUrl}/>
                     <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
                   </Avatar>
                 </div>
