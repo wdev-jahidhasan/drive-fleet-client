@@ -31,7 +31,7 @@ const WhyChooseUs = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-sm font-semibold tracking-wider text-rose-500 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
+          <span className="text-sm font-semibold tracking-wider text-yellow-400 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
             Why Choose Us
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3">
@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="bg-slate-800/60 border border-slate-700/60 p-6 rounded-2xl hover:border-rose-500/50 transition-all duration-300"
+              className="bg-slate-800/60 border border-slate-700/60 p-6 rounded-2xl hover:border-yellow-500/50 transition-all duration-300"
             >
               <div className="p-3 bg-slate-900/80 w-fit rounded-xl border border-slate-700/50 mb-4">
                 {feature.icon}

@@ -19,7 +19,7 @@ const AvailableCars = async () => {
 
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-sm font-semibold tracking-wider text-rose-500 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
+          <span className="text-sm font-semibold tracking-wider text-yellow-400 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
             Available Cars
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3">
