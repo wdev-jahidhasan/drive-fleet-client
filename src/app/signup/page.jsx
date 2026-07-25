@@ -4,6 +4,7 @@ import { Button, Form, Input, Label, TextField, Description, FieldError, Card } 
 import { redirect } from 'next/navigation';
 import React from 'react';
 import toast from 'react-hot-toast';
+import { FaGoogle } from 'react-icons/fa';
 
 const SignUpPage = () => {
   const handleSignUp = async (e) => {
@@ -12,35 +13,44 @@ const SignUpPage = () => {
     const formData = new FormData(e.currentTarget);
     const user = Object.fromEntries(formData.entries());
 
-    const {data, error} = await authClient.signUp.email({
+    const { data, error } = await authClient.signUp.email({
       email: user.email,
       password: user.password,
       name: user.name,
       image: user.imageUrl || undefined,
     })
 
-    if(data){
+    if (data) {
       toast.success('Signed up successfully')
       redirect('/login')
     }
 
-    if(error){
+    if (error) {
       toast.error(error.message)
     }
 
   };
+
+  const handleGoogleSignIn = async () => {
+    const data = await authClient.signIn.social(
+      {
+        provider: "google",
+      }
+    )
+  };
+
   return (
     <div className='bg-slate-900 flex items-center justify-center'>
       <Card className='bg-slate-800 w-full max-w-7xl mx-auto'>
         <h1 className="text-3xl font-bold mb-6 text-white text-center">Register Your Account</h1>
-        <Form onSubmit={handleSignUp} className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto py-5">
-          
+        <Form onSubmit={handleSignUp} className="flex w-80 md:w-96 flex-col gap-4 max-w-7xl mx-auto">
+
           {/* Name Field */}
           <TextField isRequired name="name">
             <Label className='text-white'>Name</Label>
-            <Input 
-              placeholder="John Doe" 
-              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500' 
+            <Input
+              placeholder="John Doe"
+              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500'
             />
             <FieldError />
           </TextField>
@@ -48,9 +58,9 @@ const SignUpPage = () => {
           {/* Image url */}
           <TextField name="imageUrl">
             <Label className='text-white'>Image URL (Optional)</Label>
-            <Input 
-              placeholder="https://example.com/avatar.jpg" 
-              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500' 
+            <Input
+              placeholder="https://example.com/avatar.jpg"
+              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500'
             />
             <FieldError />
           </TextField>
@@ -68,9 +78,9 @@ const SignUpPage = () => {
             }}
           >
             <Label className='text-white'>Email</Label>
-            <Input 
-              placeholder="john@example.com" 
-              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500' 
+            <Input
+              placeholder="john@example.com"
+              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500'
             />
             <FieldError />
           </TextField>
@@ -94,9 +104,9 @@ const SignUpPage = () => {
             }}
           >
             <Label className='text-white'>Password</Label>
-            <Input 
-              placeholder="Enter your password" 
-              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500' 
+            <Input
+              placeholder="Enter your password"
+              className='bg-slate-900 border border-slate-700 text-white placeholder-slate-400 focus:border-cyan-500'
             />
             <Description className='text-white text-xs'>
               Must be at least 6 characters with 1 uppercase and 1 lowercase letter
@@ -110,6 +120,17 @@ const SignUpPage = () => {
             </Button>
           </div>
         </Form>
+
+        <div className="flex flex-col items-center pb-2">
+          <p className="text-center text-md font-bold mb-3 text-white">OR</p>
+          <Button
+            onClick={handleGoogleSignIn}
+            className="w-80 md:w-96 bg-[#8a0e37] hover:bg-[#bd2a5b] text-white flex items-center justify-center gap-2"
+          >
+            <FaGoogle /> Login with Google
+          </Button>
+        </div>
+
       </Card>
     </div>
   );
