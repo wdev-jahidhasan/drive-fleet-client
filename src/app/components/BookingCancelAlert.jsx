@@ -8,7 +8,7 @@ export function BookingCancelAlert({bookingId}) {
     const res = await fetch(`http://localhost:8000/booking/${bookingId}`, {
       method: "DELETE",
       headers: {
-        "content-type" : "application/json"
+        "content-type" : "application/json",
       }
     })
 

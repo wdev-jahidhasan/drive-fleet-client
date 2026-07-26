@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextField, Select, TextArea } from "@heroui/react";
 import { Edit } from "lucide-react";
@@ -8,7 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 export function EditModal({ car }) {
 
-  const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, _id } = car;
+  const {description, imageUrl, location, price, _id } = car;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,10 +19,13 @@ export function EditModal({ car }) {
 
     // console.log(carData);
 
+    const {data: tokenData} = await authClient.token()
+
     const res = await fetch(`http://localhost:8000/cars/${_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        authorization : `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(carData),
     });
