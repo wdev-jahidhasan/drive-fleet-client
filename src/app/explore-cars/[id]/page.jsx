@@ -9,11 +9,20 @@ import Link from "next/link";
 const CarDetails = async ({ params }) => {
   const { id } = await params;
 
+  const {token} = await auth.api.getToken({
+    headers : await headers(),
+  })
+  console.log(token);
+
   const session = await auth.api.getSession({
     headers: await headers()
   })
 
-  const res = await fetch(`http://localhost:8000/cars/${id}`);
+  const res = await fetch(`http://localhost:8000/cars/${id}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
   const car = await res.json();
 
   const { capacity, carType, company, description, fuelType, imageUrl, location, model, price, transmission, status } = car;
