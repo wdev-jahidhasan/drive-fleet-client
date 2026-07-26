@@ -9,10 +9,11 @@ import Link from "next/link";
 const CarDetails = async ({ params }) => {
   const { id } = await params;
 
+  // server component ------------------------------------------------
   const {token} = await auth.api.getToken({
     headers : await headers(),
   })
-  console.log(token);
+  // console.log(token);
 
   const session = await auth.api.getSession({
     headers: await headers()

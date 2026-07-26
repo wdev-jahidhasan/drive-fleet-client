@@ -2,34 +2,32 @@ import dns from "dns";
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 import { betterAuth } from "better-auth";
-import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 import { jwt } from "better-auth/plugins";
+import clientPromise from "./mongodb.js";
 
-const client = new MongoClient(process.env.MONGODB_URI);
-const db = client.db('drive-fleet');
+const client = await clientPromise;
+const db = client.db("drive-fleet");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, {
-    client
+    client,
   }),
-  emailAndPassword: { 
-    enabled: true, 
+  emailAndPassword: {
+    enabled: true,
   },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }
+    },
   },
   session: {
     cookieCache: {
       enabled: true,
       strategy: "jwt",
-      maxAge: 7 * 24 * 60 * 60
-    }
+      maxAge: 7 * 24 * 60 * 60,
+    },
   },
-  plugins: [
-    jwt()
-  ]
+  plugins: [jwt()],
 });

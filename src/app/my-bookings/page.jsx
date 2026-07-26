@@ -10,16 +10,16 @@ const MyBookingPage = async () => {
 
   const user = session?.user;
 
-  // if (!user) {
-  //   return (
-  //     <div className="max-w-5xl mx-auto p-6 text-center text-red-500 font-semibold">
-  //       Please log in to view your bookings.
-  //     </div>
-  //   );
-  // }
+  const {token} = await auth.api.getToken({
+    headers : await headers(),
+  })
+  console.log(token);
 
   const res = await fetch(`http://localhost:8000/booking/${user?.id}`, {
     cache: "no-store",
+    headers: {
+      authorization: `Bearer ${token}`
+    }
   });
   const bookings = await res.json();
 

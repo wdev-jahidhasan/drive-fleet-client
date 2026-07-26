@@ -18,10 +18,14 @@ const BookingForm = ({ car }) => {
     const data = Object.fromEntries(new FormData(e.currentTarget));
     console.log("Form Data:", data);
 
+    // client component ---------------------------------------
+    const {data: tokenData} = await authClient.token()
+
     const res = await fetch('http://localhost:8000/booking', {
       method: "POST",
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        authorization : `Bearer ${tokenData?.token}`
       },
       body: JSON.stringify(data)
     })
