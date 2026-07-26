@@ -12,7 +12,7 @@ const MyAddedCars = async () => {
   const userId = session.user.id;
   console.log("Passing userId to MyAddedCars:", userId);
 
-  const res = await fetch(`http://localhost:8000/cars/user/${userId}`,
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars/user/${userId}`,
     {
       cache: 'no-store',
     }

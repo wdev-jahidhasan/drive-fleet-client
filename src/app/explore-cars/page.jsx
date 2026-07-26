@@ -3,7 +3,7 @@ import CarCard from '../components/CarCard';
 import { div } from 'framer-motion/client';
 
 const ExploreCars = async () => {
-  const res = await fetch('http://localhost:8000/cars')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars`)
   const cars = await res.json()
 
   return (

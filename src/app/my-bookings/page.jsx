@@ -15,7 +15,7 @@ const MyBookingPage = async () => {
   })
   console.log(token);
 
-  const res = await fetch(`http://localhost:8000/booking/${user?.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${user?.id}`, {
     cache: "no-store",
     headers: {
       authorization: `Bearer ${token}`

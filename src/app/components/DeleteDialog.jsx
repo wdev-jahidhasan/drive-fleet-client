@@ -10,7 +10,7 @@ export function DeleteDialog({car}) {
   const { _id, model} = car;
 
   const handleDelete = async () => {
-    const res = await fetch(`http://localhost:8000/cars/${_id}`,
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars/${_id}`,
       {
         method: "DELETE",
         headers: {

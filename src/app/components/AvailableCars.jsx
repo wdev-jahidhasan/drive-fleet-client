@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { div } from 'framer-motion/client';
 
 const AvailableCars = async () => {
-  const res = await fetch('http://localhost:8000/available')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/available`)
   const cars = await res.json()
   // console.log(cars);
 
