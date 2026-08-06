@@ -1,13 +1,11 @@
 import React from 'react';
-import { ShieldCheck, Headset, Wallet, Rocket } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@heroui/react';
-import CarCard from './CarCard';
 import Image from 'next/image';
-import { div } from 'framer-motion/client';
 
-const AvailableCars = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/available`)
+const PopularCars = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/available`, {
+    cache: 'no-store'
+  })
   const cars = await res.json()
   // console.log(cars);
 
@@ -20,10 +18,10 @@ const AvailableCars = async () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-sm font-semibold tracking-wider text-yellow-400 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
-            Available Cars
+            Popular Cars
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-3">
-            Book Our Available Cars
+            Book Our Popular Cars
           </h2>
         </div>
 
@@ -111,4 +109,4 @@ const AvailableCars = async () => {
   );
 };
 
-export default AvailableCars;
+export default PopularCars;

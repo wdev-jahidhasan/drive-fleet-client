@@ -2,7 +2,9 @@ import React from 'react';
 import CarCard from '../components/CarCard';
 
 const ExploreCars = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/cars`, {
+    cache: 'no-store'
+  })
   const cars = await res.json()
 
   return (
