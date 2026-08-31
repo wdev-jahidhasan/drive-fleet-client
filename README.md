@@ -63,6 +63,8 @@ A modern, responsive full-stack car rental platform where users can browse avail
 - View all personal bookings
 - Cancel bookings
 - Prevent unauthorized booking actions
+- Users can search cars by model or company name
+- Users can filter cars by type
 
 ---
 
