@@ -12,7 +12,7 @@ const CarSearchFilter = () => {
 
   const handleFilterChange = (newSearch, newType) => {
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (newSearch) {
       params.set('search', newSearch);
     } else {
@@ -31,7 +31,7 @@ const CarSearchFilter = () => {
   };
 
   return (
-    <div className="bg-slate-900/50 p-4 rounded-2xl border border-slate-700/60 backdrop-blur-md mb-8 flex flex-col sm:flex-row items-center gap-4">
+    <div className="bg-slate-900/50 rounded-2xl border border-slate-700/60 backdrop-blur-md mb-8 flex flex-col sm:flex-row items-center gap-4">
       {/* Search Input */}
       <div className="w-full sm:flex-1">
         <input
@@ -43,7 +43,7 @@ const CarSearchFilter = () => {
             setSearch(value);
             handleFilterChange(value, type);
           }}
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-blue-500 transition-colors"
+          className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-teal-900 transition-colors"
         />
       </div>
 
@@ -56,7 +56,7 @@ const CarSearchFilter = () => {
             setType(value);
             handleFilterChange(search, value);
           }}
-          className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-teal-900 transition-colors cursor-pointer"
         >
           <option value="">All Types</option>
           <option value="Sedan">Sedan</option>
