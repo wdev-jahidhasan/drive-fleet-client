@@ -3,22 +3,22 @@ import { ShieldCheck, Headset, Wallet, Rocket } from 'lucide-react';
 
 const features = [
   {
-    icon: <ShieldCheck className="w-8 h-8 text-rose-600" />,
+    icon: <ShieldCheck className="w-7 h-7 text-rose-500" />,
     title: "Verified Vehicles",
     description: "Every car in our fleet is thoroughly inspected and fully insured for your safety."
   },
   {
-    icon: <Headset className="w-8 h-8 text-rose-600" />,
+    icon: <Headset className="w-7 h-7 text-rose-500" />,
     title: "24/7 Support",
     description: "Our dedicated support team is available around the clock to assist you anywhere."
   },
   {
-    icon: <Wallet className="w-8 h-8 text-rose-600" />,
+    icon: <Wallet className="w-7 h-7 text-rose-500" />,
     title: "Best Price Guarantee",
     description: "Enjoy transparent pricing with no hidden charges or unexpected fees."
   },
   {
-    icon: <Rocket className="w-8 h-8 text-rose-600" />,
+    icon: <Rocket className="w-7 h-7 text-rose-500" />,
     title: "Instant Booking",
     description: "Book your preferred vehicle within minutes with our seamless online process."
   }
@@ -26,31 +26,35 @@ const features = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-8 px-6 md:px-12 bg-slate-900 text-white">
+    <section className="py-12 px-6 md:px-12 bg-slate-950 text-white">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-sm font-semibold tracking-wider text-yellow-400 uppercase bg-rose-500/10 px-3 py-1 rounded-full">
+          <span className="text-xs font-bold tracking-wider text-amber-400 uppercase bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full">
             Why Choose Us
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mt-3">
-            We Offer Best Experience With Our Luxury Cars
+          <h2 className="text-3xl md:text-4xl font-extrabold mt-4 text-white tracking-tight">
+            We Offer Best Experience With Luxury Cars
           </h2>
         </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="bg-slate-800/60 border border-slate-700/60 p-6 rounded-2xl hover:border-yellow-500/50 transition-all duration-300"
+            <div
+              key={index}
+              className="bg-slate-900 border border-slate-800 p-6 rounded-2xl hover:border-slate-700 transition-all duration-300 shadow-lg group flex flex-col"
             >
-              <div className="p-3 bg-slate-900/80 w-fit rounded-xl border border-slate-700/50 mb-4">
+              <div className="p-3 bg-slate-950 w-fit rounded-xl border border-slate-800 mb-4 group-hover:border-slate-700 transition-colors">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">
+
+              <h3 className="text-xl font-semibold text-white">{feature.title}</h3>
+
+              <div className="w-full h-[1px] bg-yellow-900 my-3"></div>
+
+              <p className="text-slate-300 text-sm leading-relaxed">
                 {feature.description}
               </p>
             </div>
