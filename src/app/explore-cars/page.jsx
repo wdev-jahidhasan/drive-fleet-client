@@ -72,7 +72,17 @@ const ExploreCars = () => {
 
         {/* Cars Grid with fixed minimum height to prevent UI breaking on last page */}
         {loading ? (
-          <div className="text-white text-center py-20 text-xl min-h-[850px] flex items-center justify-center">Loading cars...</div>
+          <div className="min-h-[850px] w-full flex flex-col items-center justify-center col-span-full">
+            <div className="relative flex items-center justify-center">
+              {/* Outer Glowing Ring */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-teal-500/20 border-t-teal-400 rounded-full animate-spin"></div>
+              {/* Inner Spinner */}
+              <div className="absolute w-10 h-10 sm:w-12 sm:h-12 border-4 border-cyan-500/20 border-b-cyan-400 rounded-full animate-spin"></div>
+            </div>
+            <p className="text-slate-300 font-medium mt-4 text-sm sm:text-base tracking-wider animate-pulse">
+              Loading cars...
+            </p>
+          </div>
         ) : (
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 min-h-[850px] content-start'>
             {cars.length > 0 ? (
