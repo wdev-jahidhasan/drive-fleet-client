@@ -38,19 +38,28 @@ const ExploreCars = () => {
   }, [search, type, page]);
 
   return (
-    <div className='bg-slate-800 min-h-screen w-full'>
-      <div className='max-w-7xl mx-auto p-4 w-full'>
-        <h1 className='text-4xl font-bold text-white pb-4'>All Cars</h1>
+    <div className='bg-slate-950 min-h-screen w-full'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full'>
+
+        {/* Header Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Explore All Cars
+          </h1>
+          <p className="text-slate-300 text-sm mt-1">
+            Browse through our wide selection of vehicles available for rent.
+          </p>
+        </div>
 
         {/* Search and Filter UI */}
-        <div className="bg-slate-900/50 p-4 rounded-2xl border border-slate-700/60 backdrop-blur-md mb-8 flex flex-col sm:flex-row items-center gap-4">
+        <div className="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-xl mb-8 flex flex-col sm:flex-row items-center gap-4">
           <div className="w-full sm:flex-1">
             <input
               type="text"
-              placeholder="Search by car model or company name"
+              placeholder="Search by car model or company name..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-teal-700 transition-colors"
+              className="w-full px-4 py-3 rounded-xl bg-slate-950 text-slate-100 placeholder-slate-400 border border-slate-700 focus:outline-none focus:border-cyan-400 transition-colors text-sm"
             />
           </div>
 
@@ -58,9 +67,9 @@ const ExploreCars = () => {
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-slate-700 focus:outline-none focus:border-teal-800 transition-colors cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl bg-slate-950 text-slate-100 border border-slate-700 focus:outline-none focus:border-cyan-400 transition-colors cursor-pointer text-sm"
             >
-              <option value="">All Types</option>
+              <option value="" className="text-slate-400">All Types</option>
               <option value="Sedan">Sedan</option>
               <option value="SUV">SUV</option>
               <option value="Hatchback">Hatchback</option>
@@ -75,7 +84,7 @@ const ExploreCars = () => {
           <div className="min-h-[850px] w-full flex flex-col items-center justify-center col-span-full">
             <div className="relative flex items-center justify-center">
               {/* Outer Glowing Ring */}
-              <div className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-teal-500/20 border-t-teal-400 rounded-full animate-spin"></div>
+              <div className="w-16 h-16 sm:w-20 sm:h-20 border-4 border-amber-500/20 border-t-amber-400 rounded-full animate-spin"></div>
               {/* Inner Spinner */}
               <div className="absolute w-10 h-10 sm:w-12 sm:h-12 border-4 border-cyan-500/20 border-b-cyan-400 rounded-full animate-spin"></div>
             </div>
@@ -84,22 +93,25 @@ const ExploreCars = () => {
             </p>
           </div>
         ) : (
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 min-h-[850px] content-start'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[850px] content-start'>
             {cars.length > 0 ? (
               cars.map((car) => <CarCard key={car._id} car={car}></CarCard>)
             ) : (
-              <p className="text-white col-span-full text-center py-10 text-lg">No cars found!</p>
+              <div className="bg-slate-900 border border-slate-800 rounded-3xl p-12 text-center shadow-xl col-span-full my-auto">
+                <p className="text-rose-400 text-lg font-semibold">No cars found!</p>
+                <p className="text-slate-400 text-sm mt-1">Try adjusting your search or filter keywords.</p>
+              </div>
             )}
           </div>
         )}
 
         {/* Pagination UI */}
         {!loading && totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 mt-10 pb-10">
+          <div className="flex justify-center items-center gap-2 mt-12 pb-12">
             <button
               onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
               disabled={page === 1}
-              className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white disabled:opacity-40 hover:bg-slate-700 transition cursor-pointer disabled:cursor-not-allowed"
+              className="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 disabled:opacity-40 hover:bg-slate-800 transition cursor-pointer disabled:cursor-not-allowed text-sm font-medium"
             >
               Previous
             </button>
@@ -110,9 +122,9 @@ const ExploreCars = () => {
                 <button
                   key={pageNumber}
                   onClick={() => setPage(pageNumber)}
-                  className={`px-4 py-2 rounded-xl transition cursor-pointer ${page === pageNumber
-                    ? 'bg-teal-950 text-white font-bold border border-teal-800'
-                    : 'bg-slate-900 text-slate-300 border border-slate-700 hover:bg-slate-700'
+                  className={`px-4 py-2.5 rounded-xl transition cursor-pointer text-sm font-medium ${page === pageNumber
+                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                    : 'bg-slate-900 text-slate-300 border border-slate-800 hover:bg-slate-800'
                     }`}
                 >
                   {pageNumber}
@@ -123,7 +135,7 @@ const ExploreCars = () => {
             <button
               onClick={() => setPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={page === totalPages}
-              className="px-4 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white disabled:opacity-40 hover:bg-slate-700 transition cursor-pointer disabled:cursor-not-allowed"
+              className="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 disabled:opacity-40 hover:bg-slate-800 transition cursor-pointer disabled:cursor-not-allowed text-sm font-medium"
             >
               Next
             </button>
