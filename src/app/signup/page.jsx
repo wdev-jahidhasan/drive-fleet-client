@@ -39,34 +39,34 @@ const SignUpPage = () => {
 
   return (
     <div className='min-h-screen bg-slate-950 flex flex-col items-center justify-center py-10 px-4'>
-      <Card className='bg-slate-900 border border-slate-800 p-6 md:p-8 shadow-xl rounded-2xl w-full max-w-md'>
+      <Card className='bg-slate-900 border border-slate-700 p-6 md:p-8 shadow-2xl rounded-2xl w-full max-w-md'>
 
         {/* Header */}
         <div className="text-center mb-6">
-          <h1 className="text-2xl md:text-3xl font-bold text-white tracking-tight">Create an account</h1>
-          <p className="text-slate-400 text-sm mt-1">Register your DriveFleet account</p>
+          <h1 className="text-2xl md:text-3xl font-bold text-slate-100 tracking-tight">Create an account</h1>
+          <p className="text-slate-300 text-sm mt-1">Register your DriveFleet account</p>
         </div>
 
         {/* Signup Form */}
         <Form onSubmit={handleSignUp} className="flex flex-col gap-4">
           {/* Name Field */}
           <TextField isRequired name="name">
-            <Label className='text-slate-300 text-sm font-medium'>Name</Label>
+            <Label className='text-slate-200 text-sm font-semibold'>Name</Label>
             <Input
               placeholder="John Doe"
-              className='bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 rounded-lg'
+              className='bg-slate-950 border border-slate-600 text-slate-100 placeholder-slate-400 focus:border-cyan-400 rounded-lg'
             />
-            <FieldError className='text-rose-400 text-xs mt-1' />
+            <FieldError className='text-rose-400 text-xs mt-1 font-medium' />
           </TextField>
 
           {/* Image url */}
           <TextField name="imageUrl">
-            <Label className='text-slate-300 text-sm font-medium'>Image URL (Optional)</Label>
+            <Label className='text-slate-200 text-sm font-semibold'>Image URL (Optional)</Label>
             <Input
               placeholder="https://example.com/avatar.jpg"
-              className='bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 rounded-lg'
+              className='bg-slate-950 border border-slate-600 text-slate-100 placeholder-slate-400 focus:border-cyan-400 rounded-lg'
             />
-            <FieldError className='text-rose-400 text-xs mt-1' />
+            <FieldError className='text-rose-400 text-xs mt-1 font-medium' />
           </TextField>
 
           {/* Email */}
@@ -81,12 +81,12 @@ const SignUpPage = () => {
               return null;
             }}
           >
-            <Label className='text-slate-300 text-sm font-medium'>Email</Label>
+            <Label className='text-slate-200 text-sm font-semibold'>Email</Label>
             <Input
               placeholder="john@example.com"
-              className='bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 rounded-lg'
+              className='bg-slate-950 border border-slate-600 text-slate-100 placeholder-slate-400 focus:border-cyan-400 rounded-lg'
             />
-            <FieldError className='text-rose-400 text-xs mt-1' />
+            <FieldError className='text-rose-400 text-xs mt-1 font-medium' />
           </TextField>
 
           {/* Password */}
@@ -107,41 +107,41 @@ const SignUpPage = () => {
               return null;
             }}
           >
-            <Label className='text-slate-300 text-sm font-medium'>Password</Label>
+            <Label className='text-slate-200 text-sm font-semibold'>Password</Label>
             <Input
               placeholder="Enter your password"
-              className='bg-slate-950 border border-slate-700 text-white placeholder-slate-500 focus:border-cyan-500 rounded-lg'
+              className='bg-slate-950 border border-slate-600 text-slate-100 placeholder-slate-400 focus:border-cyan-400 rounded-lg'
             />
-            <Description className='text-slate-400 text-xs mt-1'>
+            <Description className='text-slate-300 text-xs mt-1'>
               Must be at least 6 chars with 1 uppercase & 1 lowercase
             </Description>
-            <FieldError className='text-rose-400 text-xs mt-1' />
+            <FieldError className='text-rose-400 text-xs mt-1 font-medium' />
           </TextField>
 
-          <Button type="submit" className='w-full mt-2 bg-[#8a0e37] hover:bg-[#bd2a5b] text-white font-medium py-2.5 rounded-lg transition-all shadow-md'>
+          <Button type="submit" className='w-full mt-2 bg-[#8a0e37] hover:bg-[#bd2a5b] text-white font-semibold py-2.5 rounded-lg transition-all shadow-md'>
             Sign Up
           </Button>
         </Form>
 
         {/* Divider */}
         <div className="relative flex py-5 items-center">
-          <div className="flex-grow border-t border-slate-800"></div>
-          <span className="flex-shrink mx-4 text-slate-500 text-xs uppercase">Or</span>
-          <div className="flex-grow border-t border-slate-800"></div>
+          <div className="flex-grow border-t border-slate-700"></div>
+          <span className="flex-shrink mx-4 text-slate-400 text-xs uppercase font-medium">Or</span>
+          <div className="flex-grow border-t border-slate-700"></div>
         </div>
 
         {/* Google Sign In */}
         <Button
           onClick={handleGoogleSignIn}
-          className='w-full bg-slate-950 border border-slate-700 text-slate-200 hover:bg-slate-800 hover:text-white font-medium py-2.5 rounded-lg transition-all flex items-center justify-center gap-2 mb-6'
+          className='w-full bg-slate-950 border border-slate-600 text-slate-100 hover:bg-slate-800 hover:border-slate-500 font-semibold py-2.5 rounded-lg transition-all flex items-center justify-center gap-2 mb-6 shadow-sm'
         >
           <FcGoogle className="text-xl" /> Continue with Google
         </Button>
 
         {/* Login Link Inside Same Plate */}
-        <div className="pt-4 border-t border-slate-800 text-center flex items-center justify-center gap-2 text-sm">
-          <span className='text-slate-400'>Already have an account?</span>
-          <Link href={'/login'} className='text-amber-400 font-semibold hover:underline'>
+        <div className="pt-4 border-t border-slate-700 text-center flex items-center justify-center gap-2 text-sm">
+          <span className='text-slate-300'>Already have an account?</span>
+          <Link href={'/login'} className='text-amber-400 font-bold hover:underline'>
             Login
           </Link>
         </div>
